@@ -21,5 +21,6 @@ trait MakesHttpRequests
             ],
         ]);
 
+        return json_decode($req, true);
     }
 }

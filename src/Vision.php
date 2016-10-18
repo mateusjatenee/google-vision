@@ -4,10 +4,11 @@ namespace Mateusjatenee\GoogleVision;
 
 use Guzzle\Http\Client;
 use Mateusjatenee\GoogleVision\Traits\MakesHttpRequests;
+use Mateusjatenee\GoogleVision\Traits\ParsesContent;
 
 class Vision
 {
-    use MakesHttpRequests;
+    use MakesHttpRequests, ParsesContent;
 
     protected $endpoints = [
         'text' => 'https://vision.googleapis.com/v1/images:annotate',
@@ -25,7 +26,8 @@ class Vision
 
     public function readImageText($base64)
     {
-        $this->callTextDetection($base64);
+        $content = $this->callTextDetection($base64);
 
+        return $this->parseContent($content);
     }
 }
