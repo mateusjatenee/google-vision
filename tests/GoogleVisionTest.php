@@ -5,6 +5,7 @@ namespace Mateusjatenee\GoogleVision\Tests;
 use Guzzle\Http\Client;
 use Illuminate\Support\Collection;
 use Mateusjatenee\GoogleVision\Vision;
+use Mateusjatenee\GoogleVision\VisionAnottation;
 use PHPUnit_Framework_TestCase as PHPUnit;
 use \Mockery as m;
 
@@ -43,8 +44,22 @@ class GoogleVisionTest extends PHPUnit
         $response = $googleVision->readImageText('foo');
 
         $this->assertInstanceOf(Collection::class, $response);
+    }
 
-        $this->assertArrayHasKey('textAnnotations', $response->first());
+    /** @test */
+    public function it_returns_a_collection_of_vision_anottations()
+    {
+        $guzzle_mock = m::mock(Client::class);
+        $guzzle_mock
+            ->shouldReceive('post')
+            ->once()
+            ->andReturn(json_encode($this->getApiResponseStub()));
+
+        $googleVision = new Vision('foo', $guzzle_mock);
+
+        $response = $googleVision->readImageText('foo');
+
+        $this->assertInstanceOf(VisionAnottation::class, $response->first());
     }
 
     protected function getApiResponseStub()
