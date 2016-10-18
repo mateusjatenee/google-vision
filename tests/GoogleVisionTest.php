@@ -2,7 +2,7 @@
 
 namespace Mateusjatenee\GoogleVision\Tests;
 
-use Guzzle\Http\Client;
+use GuzzleHttp\Client;
 use Illuminate\Support\Collection;
 use Mateusjatenee\GoogleVision\Exceptions\ResponseNotValidException;
 use Mateusjatenee\GoogleVision\Tests\Traits\StubTrait;
@@ -25,8 +25,9 @@ class GoogleVisionTest extends PHPUnit
     {
         $guzzle_mock = m::mock(Client::class);
         $guzzle_mock
-            ->shouldReceive('post')
-            ->once();
+            ->shouldReceive('post->getBody')
+            ->once()
+            ->andReturn(json_encode($this->getApiResponseStub()));
 
         $googleVision = new Vision('foo', $guzzle_mock);
 
@@ -38,7 +39,7 @@ class GoogleVisionTest extends PHPUnit
     {
         $guzzle_mock = m::mock(Client::class);
         $guzzle_mock
-            ->shouldReceive('post')
+            ->shouldReceive('post->getBody')
             ->once()
             ->andReturn(json_encode($this->getApiResponseStub()));
 
@@ -54,7 +55,7 @@ class GoogleVisionTest extends PHPUnit
     {
         $guzzle_mock = m::mock(Client::class);
         $guzzle_mock
-            ->shouldReceive('post')
+            ->shouldReceive('post->getBody')
             ->once()
             ->andReturn(json_encode([
                 'responses' => [],
@@ -72,7 +73,7 @@ class GoogleVisionTest extends PHPUnit
     {
         $guzzle_mock = m::mock(Client::class);
         $guzzle_mock
-            ->shouldReceive('post')
+            ->shouldReceive('post->getBody')
             ->once()
             ->andReturn(json_encode($this->getApiResponseStub()));
 

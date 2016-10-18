@@ -22,7 +22,7 @@ trait MakesHttpRequests
                     ],
 
                 ],
-            ]), true
+            ])->getBody(), true
         );
 
         if ($req['responses'] === []) {

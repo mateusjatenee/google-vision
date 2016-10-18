@@ -2,7 +2,7 @@
 
 namespace Mateusjatenee\GoogleVision;
 
-use Guzzle\Http\Client;
+use GuzzleHttp\Client;
 use Mateusjatenee\GoogleVision\Traits\MakesHttpRequests;
 use Mateusjatenee\GoogleVision\Traits\ParsesContent;
 

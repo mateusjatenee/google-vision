@@ -2,7 +2,7 @@
 
 namespace Mateusjatenee\GoogleVision\Providers;
 
-use Guzzle\Http\Client;
+use GuzzleHttp\Client;
 use Illuminate\Support\ServiceProvider;
 use Mateusjatenee\GoogleVision\Vision;
 
