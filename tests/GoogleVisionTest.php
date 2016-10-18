@@ -4,6 +4,7 @@ namespace Mateusjatenee\GoogleVision\Tests;
 
 use Guzzle\Http\Client;
 use Illuminate\Support\Collection;
+use Mateusjatenee\GoogleVision\Exceptions\ResponseNotValidException;
 use Mateusjatenee\GoogleVision\Tests\Traits\StubTrait;
 use Mateusjatenee\GoogleVision\Vision;
 use Mateusjatenee\GoogleVision\VisionAnottation;
@@ -46,6 +47,24 @@ class GoogleVisionTest extends PHPUnit
         $response = $googleVision->readImageText('foo');
 
         $this->assertInstanceOf(Collection::class, $response);
+    }
+
+    /** @test */
+    public function it_throws_exception_if_no_items_are_returned()
+    {
+        $guzzle_mock = m::mock(Client::class);
+        $guzzle_mock
+            ->shouldReceive('post')
+            ->once()
+            ->andReturn(json_encode([
+                'responses' => [],
+            ]));
+
+        $this->setExpectedException(ResponseNotValidException::class, 'The response was not valid.');
+
+        $googleVision = new Vision('foo', $guzzle_mock);
+
+        $response = $googleVision->readImageText('foo');
     }
 
     /** @test */

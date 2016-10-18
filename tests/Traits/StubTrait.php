@@ -12,7 +12,7 @@ trait StubTrait
                     'textAnnotations' => [
                         [
                             'locale' => 'en',
-                            'description' => "D. CRILLEY\n",
+                            'description' => "D. CRILLEY",
                             'boundingPoly' => [
                                 'vertices' => [
                                     [
