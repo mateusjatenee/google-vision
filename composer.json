@@ -1,0 +1,33 @@
+{
+    "name": "mateusjatenee/google-vision",
+    "description": "PHP project.",
+    "keywords": [],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mateus Guimarães",
+            "email": "mateus.jatene@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mateusjatenee\\GoogleVision\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mateusjatenee\\GoogleVision\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable",
+    "scripts": {
+        "test": "phpunit",
+        "configure-commit-template": "git config --add commit.template .gitmessage"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.6"
+    }
+}
