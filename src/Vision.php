@@ -2,14 +2,10 @@
 
 namespace Mateusjatenee\GoogleVision;
 
-class GoogleVision
+class Vision
 {
+    protected $guzzle;
 
-    /**
-     * Initialize.
-     *
-     * @return void
-     */
     public function __construct()
     {
 
