@@ -4,6 +4,17 @@ namespace Mateusjatenee\GoogleVision\Tests\Traits;
 
 trait StubTrait
 {
+    protected function getInvalidTextAnottationResponseStub()
+    {
+        return [
+            'responses' => [
+                [
+
+                ],
+            ],
+        ];
+    }
+
     protected function getApiResponseStub()
     {
         return [

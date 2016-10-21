@@ -9,7 +9,10 @@ trait ParsesContent
 {
     public function parseContent($content)
     {
-        return (new Collection($content['responses']))->map(function ($anottation) {
+        return (new Collection($content['responses']
+        ))->filter(function ($anottation) {
+            return isset($anottation['textAnnotations']);
+        })->map(function ($anottation) {
             return new VisionAnottation($anottation['textAnnotations']);
         });
 

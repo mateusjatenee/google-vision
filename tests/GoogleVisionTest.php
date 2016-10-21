@@ -83,4 +83,21 @@ class GoogleVisionTest extends PHPUnit
 
         $this->assertInstanceOf(VisionAnottation::class, $response->first());
     }
+
+    /** @test */
+    public function it_returns_null_if_anottation_is_not_valid()
+    {
+        $guzzle_mock = m::mock(Client::class);
+        $guzzle_mock
+            ->shouldReceive('post->getBody')
+            ->once()
+            ->andReturn(json_encode($this->getInvalidTextAnottationResponseStub()));
+
+        $googleVision = new Vision('foo', $guzzle_mock);
+
+        $response = $googleVision->readImageText('foo');
+
+        $this->assertEquals(null, $response->first());
+    }
+
 }
