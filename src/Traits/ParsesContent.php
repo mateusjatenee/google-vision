@@ -7,6 +7,13 @@ use Mateusjatenee\GoogleVision\VisionAnottation;
 
 trait ParsesContent
 {
+    /**
+     * Parses the response to a collection of items
+     *
+     * @param $content
+     *
+     * @return \Illuminate\Support\Collection
+     */
     public function parseContent($content)
     {
         return (new Collection($content['responses']

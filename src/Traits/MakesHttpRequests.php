@@ -6,6 +6,15 @@ use Mateusjatenee\GoogleVision\Exceptions\ResponseNotValidException;
 
 trait MakesHttpRequests
 {
+    /**
+     * @param $content
+     *
+     * @param $base64
+     *
+     * @throws \Mateusjatenee\GoogleVision\Exceptions\ResponseNotValidException
+     *
+     * @return array
+     */
     protected function callTextDetection($content, $base64 = true)
     {
         $req = json_decode(
