@@ -1,8 +1,6 @@
 language: php
 
 php:
-  - hhvm
-  - nightly
   - 7.0
 
 before_script:
